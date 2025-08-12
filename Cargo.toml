@@ -1,0 +1,25 @@
+[package]
+name = "graphqlite-rs"
+version = "0.1.0"
+edition = "2024"
+include = ["src/"]
+description = "Blazing-fast, tool to turn your SQLite into a GraphQL API in seconds."
+authors = ["Minh <vuongxuongminh@gmail.com>"]
+publish = true
+homepage = "https://github.com/vuongxuongminh/graphqlite-rs"
+
+[features]
+runtime-tokio = ["sqlx/runtime-tokio"]
+runtime-async-std = ["sqlx/runtime-async-std"]
+
+[dependencies]
+async-graphql = { workspace = true }
+sqlx = { workspace = true }
+
+[workspace]
+members = ["."]
+resolver = "2"
+
+[workspace.dependencies]
+async-graphql = { version = "7.0", features = ["dynamic-schema", "raw_value"], default-features = false }
+sqlx = { version = "0.8", features = ["sqlite"], default-features = false }
